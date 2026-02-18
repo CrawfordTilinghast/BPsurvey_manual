@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+	const params = new URLSearchParams(window.location.search);
+	const id = params.get("id");
+	
+	const webAppURL = "https://script.google.com/macros/s/AKfycbxB5z8hWnTLGIKcUW0k29zw7RFrAKQEaqtEOrg-cRVc9D96xmN_07qxy2lwhctcHIk9/exec";
+	
+	if (id) {
+            fetch(webAppURL + "?id=" + id)
+                .then(() => {
+                    randomdirect();
+                })
+                .catch(() => {
+                    randomdirect();
+                });
+        } else {
+            randomdirect();
+        }
+	
+	// 下面是随机导向的功能
+	function randomdirect(){
+		const sites = [
+            "website1.html",
+            "website2.html",
+            "website3.html"
+        ];
+
+        const randomIndex = Math.floor(Math.random() * sites.length);
+        window.location.href = sites[randomIndex];
+	}
+        
+    </script>
+</body>
+</html>

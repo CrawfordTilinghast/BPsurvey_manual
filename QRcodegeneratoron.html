@@ -1,0 +1,33 @@
+<body>
+<h2>输入桌号</h2>
+
+<input type="text" id="tableInput" placeholder="请输入桌号" />
+<button onclick="generateQR()">生成二维码</button>
+
+<div id="qrContainer" style="margin-top:20px;"></div>
+
+<script>
+const baseURL = "https://crawfordtilinghast.github.io/BPsurvey/index.html";
+
+function generateQR() {
+    const table = document.getElementById("tableInput").value.trim();
+    
+    if (!table) {
+        alert("请输入桌号！！");
+        return;
+    }
+
+    const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${baseURL}?id=${table}`;
+    
+    const img = document.createElement("img");
+    img.src = qrURL;
+
+    const container = document.getElementById("qrContainer");
+    container.innerHTML = ""; // 清空旧二维码
+    container.appendChild(img);
+}
+</script>
+
+</body>
+
+
